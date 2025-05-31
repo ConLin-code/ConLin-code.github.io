@@ -1,0 +1,694 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>Constantine Linardakis - Personal Website</title>
+    <link href="https://fonts.googleapis.com/css2?family=Roboto:wght@300;400;700&display=swap" rel="stylesheet">
+    <style>
+        /* --- General Body and Typography Styles --- */
+        body {
+            font-family: 'Roboto', sans-serif;
+            margin: 0;
+            line-height: 1.6;
+            color: #333;
+            background-color: #f4f7f6;
+            scroll-behavior: smooth;
+        }
+
+        /* Headings (h1, h2, h3) styles */
+        h1, h2, h3 {
+            font-weight: 700;
+            color: #2c3e50;
+            margin-bottom: 0.8em;
+        }
+
+        h1 { font-size: 2.8em; }
+        h2 { font-size: 2.2em; }
+        h3 { font-size: 1.6em; }
+
+        p {
+            margin-bottom: 1em;
+        }
+
+        a {
+            color: #3498db;
+            text-decoration: none;
+            transition: color 0.3s ease;
+        }
+
+        a:hover {
+            color: #2980b9;
+        }
+
+        ul {
+            list-style: none;
+            padding: 0;
+        }
+
+        li {
+            margin-bottom: 0.5em;
+        }
+
+        /* --- Header and Navigation Styles --- */
+        header {
+            background-color: #ffffff;
+            padding: 1em 0;
+            position: sticky;
+            top: 0;
+            z-index: 1000;
+            box-shadow: 0 2px 5px rgba(0,0,0,0.1);
+        }
+
+        nav ul {
+            display: flex;
+            justify-content: center;
+            margin: 0;
+            padding: 0;
+        }
+
+        nav li {
+            margin: 0 15px;
+        }
+
+        nav a {
+            color: #555;
+            font-weight: 400;
+            padding: 8px 15px;
+            border-radius: 5px;
+            transition: background-color 0.3s ease, color 0.3s ease;
+        }
+
+        nav a:hover,
+        nav a.active {
+            background-color: #3498db;
+            color: #ffffff;
+        }
+
+        /* --- Hero Section Styles --- */
+        .hero-section {
+            background: linear-gradient(rgba(52, 152, 219, 0.8), rgba(41, 128, 185, 0.8)), url('https://via.placeholder.com/1500x500/3498db/ffffff?text=Background+Image') no-repeat center center/cover;
+            color: #ffffff;
+            text-align: center;
+            padding: 100px 20px;
+            display: flex;
+            flex-direction: column;
+            align-items: center;
+            justify-content: center;
+            min-height: 70vh;
+            box-shadow: inset 0 -5px 10px rgba(0,0,0,0.2);
+        }
+
+        .hero-content {
+            display: flex;
+            flex-direction: column;
+            align-items: center;
+            max-width: 800px;
+            width: 100%;
+        }
+
+        .profile-header {
+            margin-bottom: 30px;
+            display: flex;
+            flex-direction: column;
+            align-items: center;
+        }
+
+        .profile-pic {
+            width: 150px;
+            height: 150px;
+            border-radius: 50%;
+            object-fit: cover;
+            border: 5px solid #ffffff;
+            box-shadow: 0 0 15px rgba(0,0,0,0.2);
+            margin-bottom: 20px;
+        }
+
+        .social-icons {
+            display: flex;
+            gap: 20px;
+        }
+
+        .social-icons img {
+            width: 30px;
+            height: 30px;
+            filter: brightness(0) invert(1);
+            transition: transform 0.2s ease;
+        }
+
+        .social-icons a:hover img {
+            transform: scale(1.1);
+        }
+
+        .hero-content h1 {
+            font-size: 3.5em;
+            margin-bottom: 10px;
+            color: #ffffff;
+        }
+
+        .hero-content p {
+            font-size: 1.5em;
+            margin-bottom: 30px;
+            color: #f0f0f0;
+        }
+
+        /* Button styles */
+        .btn {
+            display: inline-block;
+            background-color: #ffffff;
+            color: #3498db;
+            padding: 12px 25px;
+            border-radius: 50px;
+            font-weight: 700;
+            transition: background-color 0.3s ease, color 0.3s ease, transform 0.3s ease;
+        }
+
+        .btn:hover {
+            background-color: #ecf0f1;
+            color: #2980b9;
+            transform: translateY(-3px);
+        }
+
+        /* --- Content Sections Styles --- */
+        .content-section {
+            padding: 80px 20px;
+            max-width: 900px;
+            margin: 0 auto;
+            background-color: #ffffff;
+            box-shadow: 0 0 15px rgba(0,0,0,0.05);
+            margin-bottom: 30px;
+            border-radius: 8px;
+        }
+
+        .content-section:nth-of-type(even) {
+            background-color: #eaf2f8;
+        }
+
+        /* --- PROJECT CAROUSEL STYLES --- */
+        .projects-container {
+            position: relative;
+            margin-top: 30px;
+            overflow: hidden;
+            border-radius: 8px;
+            box-shadow: 0 4px 15px rgba(0,0,0,0.1);
+        }
+        
+        .project-carousel {
+            display: flex;
+            transition: transform 0.5s ease-in-out;
+            width: 100%;
+        }
+        
+        .project-item {
+            flex: 0 0 100%;
+            background-color: #ffffff;
+            border: 1px solid #ddd;
+            border-radius: 8px;
+            padding: 25px;
+            box-sizing: border-box;
+            box-shadow: 0 4px 8px rgba(0,0,0,0.05);
+            transition: transform 0.3s ease, box-shadow 0.3s ease;
+        }
+        
+        .project-item:hover {
+            transform: translateY(-5px);
+            box-shadow: 0 6px 12px rgba(0,0,0,0.1);
+        }
+        
+        .project-item h3 {
+            color: #3498db;
+            margin-top: 0;
+        }
+        
+        .project-item a {
+            display: inline-block;
+            margin-top: 10px;
+            font-weight: bold;
+        }
+        
+        .carousel-controls {
+            display: flex;
+            justify-content: space-between;
+            position: absolute;
+            top: 50%;
+            transform: translateY(-50%);
+            width: 100%;
+            padding: 0 10px;
+            box-sizing: border-box;
+        }
+        
+        .carousel-btn {
+            background: rgba(52, 152, 219, 0.7);
+            border: none;
+            color: white;
+            font-size: 24px;
+            width: 50px;
+            height: 50px;
+            border-radius: 50%;
+            cursor: pointer;
+            display: flex;
+            align-items: center;
+            justify-content: center;
+            transition: all 0.3s ease;
+            z-index: 10;
+        }
+        
+        .carousel-btn:hover {
+            background: rgba(41, 128, 185, 0.9);
+            transform: scale(1.1);
+        }
+        
+        .carousel-indicators {
+            display: flex;
+            justify-content: center;
+            margin-top: 20px;
+        }
+        
+        .indicator {
+            width: 12px;
+            height: 12px;
+            border-radius: 50%;
+            background-color: #ccc;
+            margin: 0 5px;
+            cursor: pointer;
+            transition: background-color 0.3s ease;
+        }
+        
+        .indicator.active {
+            background-color: #3498db;
+            transform: scale(1.2);
+        }
+
+        /* --- Academic Highlights & Leadership/Awards List Styles --- */
+        .content-section ul {
+            list-style: disc;
+            padding-left: 20px;
+        }
+
+        .content-section ul li {
+            margin-bottom: 0.8em;
+        }
+
+        /* --- Footer Styles --- */
+        footer {
+            background-color: #2c3e50;
+            color: #ecf0f1;
+            text-align: center;
+            padding: 25px 20px;
+            margin-top: 50px;
+        }
+
+        .social-links a {
+            color: #ecf0f1;
+            margin: 0 10px;
+            font-weight: 300;
+        }
+
+        .social-links a:hover {
+            color: #3498db;
+        }
+
+        /* --- My Story Timeline Styles --- */
+        #story h2 {
+            position: relative;
+            display: inline-block;
+            margin-bottom: 40px;
+        }
+
+        #story h2::after {
+            content: '';
+            position: absolute;
+            left: 50%;
+            transform: translateX(-50%);
+            bottom: -10px;
+            width: 80px;
+            height: 4px;
+            background-color: #3498db;
+            border-radius: 2px;
+        }
+
+        .timeline {
+            position: relative;
+            padding: 20px 0;
+            max-width: 800px;
+            margin: 0 auto;
+        }
+
+        .timeline::before {
+            content: '';
+            position: absolute;
+            left: 0;
+            top: 0;
+            width: 4px;
+            height: 100%;
+            background-color: #3498db;
+            border-radius: 2px;
+            transform: translateX(calc(50% - 2px));
+        }
+
+        .timeline-item {
+            position: relative;
+            margin-bottom: 40px;
+            padding-left: 40px;
+        }
+
+        .timeline-item:last-child {
+            margin-bottom: 0;
+        }
+
+        .timeline-item::before {
+            content: '';
+            position: absolute;
+            left: 0;
+            top: 5px;
+            width: 16px;
+            height: 16px;
+            background-color: #3498db;
+            border-radius: 50%;
+            border: 3px solid #ffffff;
+            box-shadow: 0 0 0 2px #3498db;
+            transform: translateX(-50%);
+        }
+
+        .timeline-item h3 {
+            margin-top: 0;
+            margin-bottom: 5px;
+            color: #2c3e50;
+            font-size: 1.3em;
+        }
+
+        .timeline-item p {
+            margin-bottom: 0;
+            color: #555;
+        }
+
+        /* --- Responsive Design Media Queries --- */
+        @media (max-width: 768px) {
+            h1 { font-size: 2.2em; }
+            h2 { font-size: 1.8em; }
+            .hero-content h1 { font-size: 2.8em; }
+            .hero-content p { font-size: 1.2em; }
+
+            nav ul {
+                flex-direction: column;
+                align-items: center;
+            }
+
+            nav li {
+                margin: 5px 0;
+            }
+
+            .content-section {
+                padding: 50px 15px;
+            }
+
+            .timeline::before {
+                left: 20px;
+            }
+
+            .timeline-item {
+                padding-left: 60px;
+            }
+
+            .timeline-item::before {
+                left: 20px;
+            }
+            
+            .carousel-btn {
+                width: 40px;
+                height: 40px;
+                font-size: 18px;
+            }
+        }
+
+        @media (max-width: 480px) {
+            nav a {
+                padding: 6px 10px;
+                font-size: 0.9em;
+            }
+            .hero-section {
+                padding: 80px 15px;
+            }
+            .hero-content h1 {
+                font-size: 2em;
+            }
+            .hero-content p {
+                font-size: 1em;
+            }
+            .profile-pic {
+                width: 100px;
+                height: 100px;
+            }
+            
+            .carousel-btn {
+                width: 35px;
+                height: 35px;
+                font-size: 16px;
+            }
+        }
+    </style>
+</head>
+<body>
+    <header>
+        <nav>
+            <ul>
+                <li><a href="#story">My Story</a></li>
+                <li><a href="#about">About Me</a></li>
+                <li><a href="#projects">Projects</a></li>
+                <li><a href="#academic">Academic Highlights</a></li>
+                <li><a href="#leadership">Leadership & Awards</a></li>
+            </ul>
+        </nav>
+    </header>
+
+    <main>
+        <section id="hero" class="hero-section">
+            <div class="hero-content">
+                <div class="profile-header">
+                    <img src="https://placehold.co/150x150/ffffff/3498db?text=Your+Photo" alt="Your Profile Picture" class="profile-pic">
+                    <div class="social-icons">
+                        <a href="https://github.com/ConLin-code" target="_blank" aria-label="GitHub"><img src="https://img.icons8.com/ios-filled/50/ffffff/github.png" alt="GitHub"></a>
+                        <a href="https://x.com/__Con_" target="_blank" aria-label="Twitter"><img src="https://img.icons8.com/ios-filled/50/ffffff/twitterx.png" alt="Twitter"></a>
+                        <a href="https://youtube.com/@constantinelinardakis8394?si=7LYfHECu8AIDckJh" target="_blank" aria-label="YouTube"><img src="https://img.icons8.com/ios-filled/50/ffffff/youtube.png" alt="YouTube"></a>
+                    </div>
+                </div>
+                <h1>Hi, I'm Constantine Linardakis</h1>
+                <p>Aspiring student with a passion for machine learning in finance.</p>
+                <a href="#story" class="btn">Learn More</a> </div>
+        </section>
+
+        <section id="story" class="content-section">
+            <h2 style="text-align: center;">My Story</h2>
+            <div class="timeline">
+                <div class="timeline-item">
+                    <h3>The Beginning</h3>
+                    <p>As a young boy, I was always known as “the tech kid.” I would spend hours each day on my iPod—watching shows like Avatar: The Last Airbender, playing games like Subway Surfers and Bloons Tower Defense, and just exploring content. Concerned about my screen time, my parents began enforcing strict time limits. But in a surprising twist, that simple restriction sparked an even deeper curiosity—one that led me to explore technology. Why? To find ways to give myself more time to play games. And how? By searching for any glitch or loophole in the system I could find. This is what first ignited my fascination with tech.</p>
+                </div>
+                <div class="timeline-item">
+                    <h3>A New Interest</h3>
+                    <p>As more and more people started calling me “the tech kid,” I became even more curious about engineering and computer science. I started learning the basics—how code works, how sensors function, and how the technology I enjoyed actually operated. It was fascinating. Over time, though, another field began to catch my eye: finance. Just like technology had once captured my interest, finance became the new focus of my curiosity. I began researching why stock prices rise and fall, what a stock actually represents, and what factors influence the market. My fascination grew so much that my mom opened a custodial account for me, in which she deposited the money I received from birthdays and holidays. I’d ask her to place trades on my behalf and would spend hours simply watching the charts. I was hooked. </p>
+                </div>
+                <div class="timeline-item">
+                    <h3>The struggles throughout Freshman year...</h3>
+                    <p>In middle school, I was always drawn to math, especially because it came naturally to me. I was fascinated by proofs and logical reasoning, and I looked forward to math class every day. But in 8th grade, everything changed. My school changed their teaching from showing proofs in which we could reason to conclusions, to mere memorization for the sake of test scores. My passion quickly faded, and my grade dropped just below the threshold needed for high school credit. Because of that, I had to retake Geometry as a freshman at Calvary Christian Academy. The transition to this school wasn’t easy for me. It was over 45 minutes from my home, compared to the school I used to walk to, and since both my parents worked my brother and I took the bus every day, Monday through Friday. I used the time to read books on finance, health, and machine learning while making some great friends along the way. I read books that included The Intelligent Investor, Outlive, and even Superintelligence. Whether I was using my phone flashlight at 6:30 a.m. in the dark or sweating through a hot afternoon in Florida's blazing sun with no AC on the bus, I was still once again hooked. Ironically, though, when I got to school, I found most subjects simply boring. Even my once loved subject math felt dull. Geometry felt repetitive, as it was my second time taking this course, and I simply wasn't engaged. Because of this, throughout my classes I started reading books on the subjects that actually interested me instead of paying attention to what my teacher had to say. It showed in my grades, and I ended up wasting an opportunity that my parents had worked so hard to provide.</p>
+                </div>
+                <div class="timeline-item">
+                    <h3>Finding light in darkness</h3>
+                    <p>As freshman year came to an end, my anxious mother insisted on having a serious talk with me. Concerned about my grades, she said, “Why are you struggling in classes? I pay too much for you to go to this school and learn nothing.” Hearing this simple phrase changed my mindset. I asked her how much she and my father paid, and she told me, “$18,000 a year.” I was shocked—I had no idea my parents were spending this much, sometimes even taking out loans, just to give me an education. And what was I doing with that opportunity? Nothing. Right then and there, I knew something had to change. I started thinking through my options, with thoughts flooding my mind: Why didn’t I find school appealing? What could make it more interesting? Was it possible to learn what truly fascinated me while still keeping up with schoolwork? Then an intriguing question struck me—what if I could create the environment I wanted within the school itself? I decided to take action. My school didn’t have an active finance club, so I founded one. I started attending any club that caught my eye. And I sought out courses that sparked my curiosity, even though my poor grades prevented me from joining advanced classes. With the help of some teachers I enrolled in electives that aligned with my interests: engineering, computer science, and personal finance. And for the rest of the year, I made the most of what was available: I joined different clubs, took some of the toughest classes I could, and pushed myself to learn and grow in school. But outside of school, I was still learning. I was continuing to read books on the bus ride to and from school, and I would still think of curious things with my brother. I finally felt like I was making the most of both my school life and my personal curiosity.</p>
+                </div>
+                <div class="timeline-item">
+                    <h3>But Nobody’s Done This Before</h3>
+                    <p>My sophomore year had just ended, and my brother was preparing to leave for college. I met with my high school counselor to plan my future classes, but I quickly learned that many of the courses I wanted were out of reach. The school’s normal progression meant I couldn’t jump straight from regular classes to AP. Seniors had priority for classes like College Algebra and Statistics, and some teachers had left, leaving only online options for the courses I wanted. Frustrated but hopeful, I decided to take a break and enjoy summer vacation. During the summer, I traveled with my family and eventually found myself back home, searching for new ways to learn. That’s when I discovered online education platforms like MIT OpenCourseWare, Stanford Online, Y Combinator, Michael Saylor Academy, Modern States, and Coursera. The idea of learning from top universities for free, at my own pace, was incredible. Around the same time, my brother and I began researching successful individuals—Steve Jobs, Elon Musk, Mark Zuckerberg, Jeff Bezos—and started listening to their interviews and podcasts. One interview with Steve Jobs stood out. He spoke about Alexander the Great and his tutor, Aristotle, and how Jobs dreamed of capturing Aristotle’s worldview in a computer. This inspired me to imagine a new way of learning: using free online lectures, taking notes, completing assignments, and having AI as a personal tutor. I tried it for a few weeks and loved it so much that it made me question why I even needed to follow a traditional high school schedule. I began discussing this with friends, family, and teachers. My parents said they couldn’t help much because of their work, but they encouraged me to take responsibility for my education—managing my GPA, AP classes, dual enrollment, and CLEP exams. Yet when I talked to others, I faced a common objection: “What about your social skills? You don’t want to become like those antisocial homeschoolers, do you? And nobody’s done this before, so how do you know it will work?” I thought about those questions deeply. I responded, “Correlation doesn’t mean causation. It might not be homeschooling that makes kids antisocial, but rather that antisocial kids get homeschooled. And I plan to stay social by going to the gym with friends and attending gatherings.” But the final objection lingered: “Nobody’s done this before. How do you know it will work?” I admitted the truth: “I don’t know if it will work. But I’m willing to try, because I know I’d regret not trying, even if it ends up worse.” I remembered Jeff Bezos’s words on regret minimization: “Regrets come more from acts of omission than from acts of commission.” That was the moment I knew it was time to take the leap—time to homeschool and take control of my education in a manner I've never seen before. </p>
+                </div>
+                <div class="timeline-item">
+                    <h3>For My Family, and Families Like Mine — Redesigning Wealth</h3>
+                    <p>Now that I had decided to homeschool, I finally had the freedom to pursue the things I loved—every single day. I created a schedule that balanced trading crypto and stocks with exploring subjects through free online platforms. For the first few months, I dove deep into everything that fascinated me, learning more each week. But when I tried to register for AP exams at my local high school, I ran into an unexpected hurdle: I missed the registration deadline. The same thing happened with dual enrollment. I had planned to take community college courses and end-of-year exams for credit, but those opportunities were no longer available. Instead of giving up, I pivoted to CLEP exams. My reasoning was simple: I could use free online resources to study for subjects that interested me and earn college credit by passing CLEP tests. But I also understood something deeper—retaining knowledge requires applying it. So that’s exactly what I did. I immersed myself in data manipulation, Python, artificial intelligence, investing, economics, financial systems, and core subjects like calculus, health, history, and writing. I built projects that included financial models, AI fine-tuning tools, and health calculators. This hands-on work transformed theory into experience—and it transformed me. Through this growth, my long-term vision crystallized: I want to create a hedge fund. Why a hedge fund? Because I saw upfront how hard it is to support a family of five on a modest income. And one day, my mom showed me her portfolio’s returns over the past ten years. They were shockingly low. Even during bull markets, her account underperformed. And in downturns, it dropped more than the S&P 500. Yet the hedge fund manager still made money—charging a 2% management fee and a 20% performance fee. It felt wrong. My parents worked so hard, only for their savings to be managed inefficiently, while the fund’s manager got paid regardless of performance. That’s when I realized: I want to build a new kind of hedge fund. One powered by AI and machine learning—designed not just to seek returns, but to serve people like my parents. This hedge fund would detect patterns in human psychology and market behavior, optimizing trades based on statistical insights. And it would have no management fees—only performance-based incentives. If the AI performs well, we succeed. If it doesn’t, we don’t get paid. That’s true alignment. Why does this matter to me? Because I’ve seen how financial systems fail everyday people. I’ve seen how hard my parents work, only to lose value in their savings over time. And I know they—like so many others—invest not just to grow wealth, but to enjoy life. To build memories with family. To feel secure. That's what I wanted my family to have. That’s what I want to help provide to others. That’s the purpose I’ve found in my journey.</p>
+                </div>
+            </div>
+        </section>
+
+        <section id="about" class="content-section">
+            <h2>About Me</h2>
+            <p>
+                I am a highly motivated student with a passion for finance and machine learning. My journey began with a fascination for tech at a young age, which evolved into a deep interest in financial markets and AI. I'm driven by the desire to create innovative solutions that can make financial systems more efficient and accessible for everyone. Outside of academics, I enjoy researching financial markets, developing AI projects, and staying active through fitness activities.
+            </p>
+        </section>
+
+        <section id="projects" class="content-section">
+            <h2>Projects</h2>
+            <div class="projects-container">
+                <div class="project-carousel" id="projectCarousel">
+                    <div class="project-item">
+                        <h3>Linear Regression on Bitcoin</h3>
+                        <p>I made a linear regression model on Bitcoin's previous data to today's date in order to further my understanding of how to use visualizations, APIs, and get a better understanding of the limitations of linear regression.</p>
+                        <a href="https://github.com/ConLin-code/Linear-regression-on-Bitcoin-price" target="_blank">View Project</a>
+                    </div>
+                    <div class="project-item">
+                        <h3>Diet Tracker</h3>
+                        <p>Since I’m passionate about fitness and the health industry, I created a diet calculator for fun. I started by gathering various equations to estimate how many calories people burn while walking, sleeping, standing, sitting, and more. The calculator determines an individual’s maintenance calories, then asks whether they want to cut, bulk, or maintain. Based on their goals, I visualize how they can achieve their target weight.</p>
+                        <a href="https://github.com/ConLin-code/diet-tracker" target="_blank">View Project</a>
+                    </div>
+                    <div class="project-item">
+                        <h3>Personified AI</h3>
+                        <p>I fine-tuned a large language model (LLM) using data from written texts such as books, lectures, and speeches by specific individuals. My goal was to capture the “worldview” of these individuals, allowing us to interact with the model as if we were conversing with them directly. This way, we can receive their perspectives on personal questions or current world events.</p>
+                        <a href="https://github.com/ConLin-code/personified-AI-" target="_blank">View Project</a>
+                    </div>
+                    <div class="project-item">
+                        <h3>Market Sentiment Analyzer</h3>
+                        <p>A tool that analyzes market sentiment by scraping financial news and social media content. It uses natural language processing to gauge investor sentiment and predict short-term market movements based on collective emotions.</p>
+                        <a href="#" target="_blank">View Project</a>
+                    </div>
+                    <div class="project-item">
+                        <h3>Portfolio Optimizer</h3>
+                        <p>An AI-powered portfolio management system that optimizes asset allocation based on risk tolerance and market conditions. It uses modern portfolio theory combined with machine learning predictions to maximize returns while minimizing risk.</p>
+                        <a href="#" target="_blank">View Project</a>
+                    </div>
+                </div>
+                <div class="carousel-controls">
+                    <button class="carousel-btn prev" aria-label="Previous project">❮</button>
+                    <button class="carousel-btn next" aria-label="Next project">❯</button>
+                </div>
+            </div>
+            <div class="carousel-indicators" id="carouselIndicators"></div>
+        </section>
+
+        <section id="academic" class="content-section">
+            <h2>Academic Highlights</h2>
+            <ul>
+                <li><strong>GPA/Relevant Coursework:</strong> Self-studied curriculum including Calculus, Statistics, Machine Learning, and Financial Markets</li>
+                <li><strong>Relevant Extracurriculars:</strong> Greek dance leader, Discord server co-founder, Stock Market President</li>
+                <li><strong>Standardized Test Scores:</strong> SAT: 1600</li>
+            </ul>
+        </section>
+
+        <section id="leadership" class="content-section">
+            <h2>Leadership & Awards</h2>
+            <ul>
+                <li><strong>Leadership Role 1:</strong> Founder and President of the Stock Market Club at Calvary Christian Academy during the 2023–2024 school year, where I led weekly discussions on the key factors that influence the financial markets. With over 30 members, we engaged in conversations about economic policies, interest rates, and even the role of human psychology in the markets behavior.</li>
+                <li><strong>Leadership Role 2:</strong> I co-founded a Discord server with three friends, where we’ve built a community of over 80 members who regularly share insights on the stock and crypto markets.</li>
+                <li><strong>Leadership Role 3:</strong> I’m one of only five designated “chartists” in a Discord server with over 6,500 members, where we actively analyze and chart various stocks and cryptocurrencies. I regularly share market outlooks, develop investment theses, and help guide members toward smarter financial decision-making. My goal is to promote financial literacy and empower others on their path to financial independence, while also sharpening my own edge in the market.</li>
+                <li><strong>Leadership Role 4:</strong> Greek dancer at Saint Demetrios Greek Orthodox Church, where I have led multiple dances during the annual Greek festival for over the last eight years.</li>
+                <li><strong>Award 1:</strong> Greek Orthodox Archdiocese of America - St. John Chrysostom Oratorical Festival 2nd place District winner</li>
+                <li><strong>Award 2:</strong> Winner of The Stock Market Game, #1 ranking in Florida out of 2,415 teams in the Spring 2023-2024 Stock Market Game.</li>
+            </ul>
+        </section>
+    </main>
+
+    <footer>
+        <p>© 2025 Constantine Linardakis. All rights reserved.</p>
+        <div class="social-links">
+            <a href="https://github.com/ConLin-code" target="_blank">GitHub</a> |
+            <a href="https://www.linkedin.com/in/constantine-linardakis-bba774319" target="_blank">LinkedIn</a>
+        </div>
+    </footer>
+
+    <script>
+        // JavaScript for smooth scrolling and active navigation highlighting
+        document.addEventListener('DOMContentLoaded', function() {
+            const navLinks = document.querySelectorAll('nav ul li a');
+            const sections = document.querySelectorAll('main section[id]');
+
+            // Function to handle smooth scrolling when a navigation link is clicked
+            navLinks.forEach(link => {
+                link.addEventListener('click', function(e) {
+                    e.preventDefault();
+                    const targetId = this.getAttribute('href').substring(1);
+                    const targetSection = document.getElementById(targetId);
+
+                    if (targetSection) {
+                        const headerHeight = document.querySelector('header').offsetHeight;
+                        const scrollPosition = targetSection.offsetTop - headerHeight + 1;
+
+                        window.scrollTo({
+                            top: scrollPosition,
+                            behavior: 'smooth'
+                        });
+                    }
+                });
+            });
+
+            // Function to highlight the active navigation link based on scroll position
+            function highlightActiveSection() {
+                const headerHeight = document.querySelector('header').offsetHeight;
+                const scrollY = window.pageYOffset;
+                let activeSectionId = 'hero';
+
+                for (let i = sections.length - 1; i >= 0; i--) {
+                    const section = sections[i];
+                    const sectionTop = section.offsetTop - headerHeight - 100;
+                    if (scrollY >= sectionTop) {
+                        activeSectionId = section.getAttribute('id');
+                        break;
+                    }
+                }
+
+                if (scrollY === 0) {
+                    activeSectionId = 'hero';
+                }
+
+                navLinks.forEach(link => {
+                    link.classList.remove('active');
+                });
+
+                const activeLink = document.querySelector(`nav ul li a[href="#${activeSectionId}"]`);
+                if (activeLink) {
+                    activeLink.classList.add('active');
+                }
+            }
+
+            // Call the highlight function
+            highlightActiveSection();
+            window.addEventListener('scroll', highlightActiveSection);
+            
+            // Project Carousel Functionality
+            const carousel = document.getElementById('projectCarousel');
+            const projectItems = document.querySelectorAll('.project-item');
+            const indicatorsContainer = document.getElementById('carouselIndicators');
+            let currentIndex = 0;
+            
+            // Create indicators
+            projectItems.forEach((_, index) => {
+                const indicator = document.createElement('div');
+                indicator.classList.add('indicator');
+                if (index === 0) indicator.classList.add('active');
+                indicator.addEventListener('click', () => {
+                    currentIndex = index;
+                    updateCarousel();
+                });
+                indicatorsContainer.appendChild(indicator);
+            });
+            
+            // Navigation buttons
+            document.querySelector('.carousel-btn.prev').addEventListener('click', () => {
+                currentIndex = (currentIndex - 1 + projectItems.length) % projectItems.length;
+                updateCarousel();
+            });
+            
+            document.querySelector('.carousel-btn.next').addEventListener('click', () => {
+                currentIndex = (currentIndex + 1) % projectItems.length;
+                updateCarousel();
+            });
+            
+            // Update carousel position and indicators
+            function updateCarousel() {
+                carousel.style.transform = `translateX(-${currentIndex * 100}%)`;
+                
+                // Update indicators
+                document.querySelectorAll('.indicator').forEach((indicator, index) => {
+                    if (index === currentIndex) {
+                        indicator.classList.add('active');
+                    } else {
+                        indicator.classList.remove('active');
+                    }
+                });
+            }
+            
+            // Auto-advance carousel (optional)
+            setInterval(() => {
+                currentIndex = (currentIndex + 1) % projectItems.length;
+                updateCarousel();
+            }, 7000);
+        });
+    </script>
+</body>
+</html>
